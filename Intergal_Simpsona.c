@@ -11,25 +11,23 @@ int main ()
 {
 
         for (int i = 0; i < sizeof(prices) / sizeof(*prices); i++)
-        {
-        	LineSpeed = (rpm *  PI / 30) * WHEELS_RAD; 
-        	prices[i] = LineSpeed;
-        }
+        	        	prices[i] = LineSpeed;
+       
 
         double sum_even = 0; // сумма четных
         double sum_odd = 0;  // сумма нечетных
-        const double h = 0.01; // шаг по времени
+        const float h = 0.01f; // шаг по времени
       
         for (int i = 0; i < sizeof(prices) / sizeof(*prices); )
         {
-        	float even = 2 * i; // четные члены массива 
-        	float odd = even + 1;  // нечетные члены массива 
+        	int even = 2 * i; // четные члены массива 
+        	int odd = even + 1;  // нечетные члены массива 
       
         	sum_odd += prices[odd];
         	sum_even += prices[even];
         }
 
-        S = (h/3) * ((*prices[1]) + (*prices[100]) + 4 * (sum_odd) + 2 * (sum_even)); // интеграл Симпсона
+        S = (h/3) * (prices[0] + prices[100] + 4 * (sum_odd) + 2 * (sum_even - prices[0] - prices[100])); // интеграл Симпсона
     
 }
 

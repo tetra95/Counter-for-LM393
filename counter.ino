@@ -25,7 +25,7 @@ int Integral_Simpsona()
         
         double sum_even = 0; // сумма четных
         double sum_odd = 0;  // сумма нечетных
-        const double h = 0.01; // шаг по времени
+        const float h = 0.01f; // шаг по времени
       
         for (int i = 0; i < sizeof(prices) / sizeof(*prices); )
         {

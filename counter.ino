@@ -36,7 +36,7 @@ int Integral_Simpsona()
           sum_even += prices[even];
         }
 
-I = (h/3) * (prices[1] + prices[100] + 4 * (sum_odd) + 2 * (sum_even)); // интеграл Симпсона
+I = (h/3) * (prices[1] + prices[100] + 4 * (sum_odd) + 2 * (sum_even - prices[100])); // интеграл Симпсона
     
 }
  

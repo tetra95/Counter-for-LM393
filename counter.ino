@@ -5,8 +5,8 @@
 #define WHEELS_RAD 65 // радиус колеса 
 #define SIZE 100
 volatile unsigned int pulses;
-double rpm, LineSpeed, I;  
-long double S; // S- пройденное расстояни, I-интегралл Симпсона 
+double rpm, LineSpeed, I; //  I-интегралл Симпсона  
+long double S; // S- пройденное расстояни
 unsigned long timeOld;
 
  

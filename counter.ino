@@ -6,7 +6,7 @@
 #define SIZE 100
 volatile unsigned int pulses;
 double rpm, LineSpeed, I; //  I-интегралл Симпсона  
-long double S; // S- пройденное расстояни
+double S; // S- пройденное расстояни
 unsigned long timeOld;
 
  
@@ -29,14 +29,14 @@ int Integral_Simpsona()
       
         for (int i = 0; i < sizeof(prices) / sizeof(*prices); )
         {
-          double even = 2 * i; // четные члены массива 
-          double odd = even + 1;  // нечетные члены массива 
+          int even = 2 * i; // четные члены массива 
+          int odd = even + 1;  // нечетные члены массива 
       
           sum_odd += prices[odd];
           sum_even += prices[even];
         }
 
-I = (h/3) * ((*prices[1]) + (*prices[100]) + 4 * (sum_odd) + 2 * (sum_even)); // интеграл Симпсона
+I = (h/3) * (prices[1] + prices[100] + 4 * (sum_odd) + 2 * (sum_even)); // интеграл Симпсона
     
 }
  

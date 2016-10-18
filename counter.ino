@@ -6,7 +6,7 @@
 #define SIZE 100
 volatile unsigned int pulses;
 double rpm, LineSpeed, I; //  I-интегралл Симпсона  
-double S; // S- пройденное расстояни
+double distance; // пройденное расстояни
 unsigned long timeOld;
 
  
@@ -46,7 +46,7 @@ void setup()
  pinMode(PIN_DO, INPUT);
  pulses = 0;
  timeOld = 0;
- S = 0;
+ distance = 0;
  attachInterrupt(digitalPinToInterrupt(PIN_DO), counter, FALLING); //запускаю прерывание на 2 ножке, прибавляю
                                                                    // к pulses значение. 
                                                                    // прерывание запускается при переходе с High на Low 
@@ -61,15 +61,15 @@ void loop()
  rpm = (pulses * 60) / (HOLES_DISC);      // формула количества оборотов/минуту
  LineSpeed = (rpm *  PI / 30) * WHEELS_RAD; // формула линейной скорости колеса
  Integral_Simpsona();
- S += I;
+ distance += I;
  
   
  Serial.print("rpm = ");
  Serial.println(rpm);
  Serial.print("LineSpeed = ");
  Serial.println(LineSpeed);
- Serial.print("S =  ");
- Serial.println(S);
+ Serial.print("distance =  ");
+ Serial.println(distance);
   
  timeOld = millis(); 
  pulses = 0;
